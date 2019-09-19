@@ -31,6 +31,12 @@
 	ClassicEditor.create( document.querySelector( '#editor' ) )
 		.then( editor => {
 			window.editor = editor;
+			/*** INSERT-START */
+			/* 'applyOperation' event is catched */
+			editor.model.on('applyOperation', (eventInfo, args) => {
+				console.log('enventInfo: ' + eventInfo, 'args: ' + JSON.stringify(args));
+			} );
+			/*** INSERT-END */			
 		} )
 		.catch( err => {
 			console.error( err.stack );
